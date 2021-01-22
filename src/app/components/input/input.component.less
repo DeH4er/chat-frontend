@@ -1,0 +1,45 @@
+@import "src/assets/css/colors";
+@import 'src/assets/css/font-settings';
+
+:host {
+  display: inline-block;
+
+  label {
+    font-size: 16px;
+    font-weight: @semi-bold;
+  }
+
+  input {
+    font-size: 16px;
+    margin-top: 16px;
+    height: 40px;
+    border: 1px solid @grey-3;
+    border-radius: 6px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    &::placeholder {
+      color: @grey-3;
+    }
+  }
+
+  input:disabled {
+    background: @grey-5;
+  }
+
+  input.full {
+    width: 100%;
+  }
+
+  input:focus {
+    border-color: @grey-1;
+  }
+
+  input.invalid {
+    border-color: @red;
+  }
+
+  .error {
+    display: inline-block;
+  }
+}

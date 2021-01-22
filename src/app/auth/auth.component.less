@@ -1,12 +1,11 @@
 @import "src/assets/css/colors";
-@import "src/assets/css/font-settings";
 
 .containers {
   display: flex;
   height: 100vh;
 }
 
-.left-container {
+.containers__left {
   max-width: 550px;
   width: 100%;
   display: flex;
@@ -14,13 +13,13 @@
   align-items: center;
 }
 
-.left-container__login {
+.containers__login-signup {
   max-width: 300px;
 }
 
-.right-container {
+.containers__right {
   width: 100%;
-  background-image: url('src/assets/images/login-bg.jpg');
+  background-image: url('../../assets/images/login-bg.jpg');
   background-repeat: no-repeat;
   background-position: left;
   background-size: cover;
@@ -44,24 +43,24 @@
   height: 100%;
   position: absolute;
 
-  &.primary {
+  &--primary {
     background: @primary;
     bottom: 0;
     right: 0;
   }
 
-  &.accent {
+  &--accent {
     background: @accent;
     top: 0;
     left: 0;
   }
 }
 
-.circles-container {
+.rectangle__circles {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 200px;
+  height: 240px;
 }
 
 .circles {
@@ -77,39 +76,25 @@
 
   position: absolute;
 
-  &.accent {
+  &--accent {
     background: @accent;
     left: 0px;
   }
 
-  &.white {
+  &--white {
     background: @white;
     left: 20px;
   }
 }
 
-
-.text-center {
+.rectangle__text-container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.text-wrap {
+.rectangle__text {
   color: @white;
   max-width: 300px;
   text-align: center;
-}
-
-.block {
-  margin-bottom: 24px;
-}
-
-.sign-up {
-  color: @primary;
-  font-weight: @semi-bold;
-
-  &:hover {
-    cursor: pointer;
-  }
 }

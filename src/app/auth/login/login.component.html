@@ -1,0 +1,43 @@
+<form [formGroup]="form">
+  <h1>Log in.</h1>
+
+  <div>
+    <app-input
+      className="full"
+      placeholder="Your unique username"
+      formControlName="username"
+      [invalid]="username.invalid && (username.dirty || username.touched)"
+      [error]="getError(username)"
+      label="Your username">
+    </app-input>
+  </div>
+
+  <div class="block-margin">
+    <app-input
+      className="full"
+      type="password"
+      placeholder="At least 5 characters"
+      formControlName="password"
+      [invalid]="password.invalid && (password.dirty || password.touched)"
+      [error]="getError(password)"
+      label="Password">
+    </app-input>
+  </div>
+
+  <div class="block-margin">
+    <app-button
+      [disabled]="form.invalid"
+      [loading]="isLogging"
+      className="full"
+      (click)="login()"
+      color="primary">
+        Log in
+    </app-button>
+  </div>
+
+  <div class="label-margin error-label" *ngIf="serverError">
+    {{ serverError }}
+  </div>
+
+  <p class="block-margin">Don't have an account? <a routerLink="/auth/register">Sign up</a></p>
+</form>

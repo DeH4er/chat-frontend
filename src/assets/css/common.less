@@ -1,0 +1,43 @@
+@import "./colors";
+@import "./font-settings";
+
+* {
+  box-sizing: border-box;
+  outline: none;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+  font-size: 32px;
+  margin-bottom: 40px;
+}
+
+p {
+  line-height: 1.8;
+}
+
+a {
+  text-decoration: none;
+  color: @primary;
+  font-weight: @semi-bold;
+
+  &:hover {
+    color: darken(@primary, 7%);
+  }
+}
+
+.error-label {
+  color: @red;
+  font-size: 12px;
+}
+
+.block-margin {
+  margin-top: 24px;
+}
+
+.label-margin {
+  margin-top: 8px;
+}

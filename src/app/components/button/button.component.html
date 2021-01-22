@@ -1,0 +1,9 @@
+<button
+  [disabled]="disabled"
+  [class]="color + ' ' + className">
+    <ng-content *ngIf="!loading; else loadingTemplate"></ng-content>
+</button>
+
+<ng-template #loadingTemplate>
+  <app-loading></app-loading>
+</ng-template>

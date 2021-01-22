@@ -1,0 +1,13 @@
+<label *ngIf="label">{{ label }}
+  <input
+    [disabled]="disabled"
+    [placeholder]="placeholder"
+    [type]="type"
+    [class]="invalid ? 'invalid ' + className : className"
+    [ngModel]="value"
+    (ngModelChange)="modelChanged($event)"/>
+</label>
+
+<div class="label-margin error-label" *ngIf="invalid">
+  {{ error }}
+</div>
