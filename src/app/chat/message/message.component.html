@@ -1,0 +1,8 @@
+<div class="message">
+  <div class="message__header">
+    <div class="message__author">{{ message?.author?.username }}</div>
+    <div class="message__date">{{ message?.created | date}}</div>
+  </div>
+
+  <div class="label-margin message__text">{{ message?.message }}</div>
+</div>

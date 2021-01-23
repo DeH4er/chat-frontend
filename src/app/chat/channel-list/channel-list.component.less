@@ -1,0 +1,35 @@
+@import 'src/assets/css/font-settings';
+@import 'src/assets/css/colors';
+
+.channel {
+  position: relative;
+  padding: 16px 24px;
+  cursor: pointer;
+  user-select: none;
+
+  &:hover {
+    background: fade(@primary, 6%);
+  }
+
+  &__name {
+    font-weight: @semi-bold;
+  }
+
+  &__users {
+    color: @grey-2;
+  }
+
+  &--selected {
+    background: fade(@primary, 6%);
+  }
+
+  &--selected:before {
+    content: '';
+    position: absolute;
+    background: @primary;
+    width: 3px;
+    height: 100%;
+    left: 0;
+    top: 0;
+  }
+}

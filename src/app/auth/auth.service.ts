@@ -1,9 +1,9 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { mapTo, tap } from 'rxjs/operators';
 
 import { ApiService } from '../services/api.service';
-import { JwtTokenDto } from './jwt-token.dto';
 import { LoginDto } from './login.dto';
 import { RegisterDto } from './register.dto';
 
@@ -11,17 +11,30 @@ import { RegisterDto } from './register.dto';
   providedIn: 'root',
 })
 export class AuthService {
-  private readonly JWT_ACCESS_TOKEN = 'JWT_ACCESS_TOKEN';
+  private isLoggedIn$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
+    true
+  );
 
   constructor(private api: ApiService) {}
 
   login(loginDto: LoginDto): Observable<void> {
     return this.api.post('auth/login', loginDto).pipe(
-      tap((token: JwtTokenDto) => {
-        this.storeToken(token);
-      }),
-      mapTo(undefined)
+      tap(() => {
+        this.isLoggedIn$.next(true);
+      })
     );
+  }
+
+  logout(): Observable<void> {
+    return this.api.post('auth/logout').pipe(
+      tap(() => {
+        this.loggedOut();
+      })
+    );
+  }
+
+  loggedOut() {
+    this.isLoggedIn$.next(false);
   }
 
   register(registerDto: RegisterDto): Observable<void> {
@@ -29,18 +42,13 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
-    return !!this.getJwtToken();
+    return this.isLoggedIn$.getValue();
   }
 
-  getJwtToken(): string | null {
-    return localStorage.getItem(this.JWT_ACCESS_TOKEN);
-  }
-
-  refreshToken(): Observable<JwtTokenDto> {
-    throw new Error('Not implemented.');
-  }
-
-  private storeToken(token: JwtTokenDto) {
-    localStorage.setItem(this.JWT_ACCESS_TOKEN, token.accessToken);
+  refreshToken(): Observable<void> {
+    const headers = new HttpHeaders({
+      ngExcludeInterceptor: 'true',
+    });
+    return this.api.post('auth/refresh', undefined, { headers });
   }
 }

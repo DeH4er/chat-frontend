@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="channel" *ngIf="channel">
+    <h1 class="channel__name">
+      #{{ channel.name }}
+    </h1>
+  </div>
+
+  <div class="messages" #messagesDiv>
+    <app-message
+      class="block-margin"
+      [message]="message"
+      *ngFor="let message of messages"></app-message>
+  </div>
+
+  <app-write-message
+    (send)="onSendMessage($event)"
+    class="write-message">
+  </app-write-message>
+</div>

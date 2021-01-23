@@ -1,0 +1,13 @@
+<input
+    placeholder="Type your message here..." class="input"
+    [ngModel]="value"
+    (ngModelChange)="valueChange($event)"
+    (keyup.enter)="sendMessage()">
+
+<app-button
+    className="full"
+    class="send"
+    color="primary"
+    (click)="sendMessage()">
+  Send
+</app-button>

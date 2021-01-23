@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="container__left channels">
+    <div class="channels__actions">
+      <app-button
+          color="primary"
+          className="full">
+        Add
+      </app-button>
+    </div>
+
+    <div class="channels__list" *ngIf="channels">
+      <app-channel-list
+          [selectedChannelId]="selectedChannelId"
+          (channelSelected)="channelSelected($event)"
+          [channels]="channels">
+      </app-channel-list>
+    </div>
+  </div>
+
+  <div class="container__right">
+    <app-channel
+        [channel]="channel"
+        [messages]="messages"
+        (sendMessage)="sendMessage($event)">
+    </app-channel>
+  </div>
+</div>

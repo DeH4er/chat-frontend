@@ -1,0 +1,8 @@
+<div
+    *ngFor="let channel of channels"
+    (click)="channelClicked(channel)"
+    class="channel"
+    [class.channel--selected]="channel.id === selectedChannelId">
+  <div class="channel__name">#{{ channel.name }}</div>
+  <div class="label-margin channel__users">25 users</div>
+</div>
