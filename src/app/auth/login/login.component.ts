@@ -77,16 +77,13 @@ export class LoginComponent implements OnDestroy {
   }
 
   getError(control: AbstractControl): string | void {
-    const error = getError(control);
-
-    if (!!error) {
-      return error;
-    }
-
     const errors = control?.errors;
+
     if (errors?.pattern) {
       return 'Special characters are unsupported';
     }
+
+    return getError(control);
   }
 
   get username(): AbstractControl {

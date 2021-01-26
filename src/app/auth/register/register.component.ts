@@ -111,13 +111,8 @@ export class RegisterComponent implements OnDestroy {
   }
 
   getError(control: AbstractControl): string | void {
-    const error = getError(control);
-
-    if (!!error) {
-      return error;
-    }
-
     const errors = control?.errors;
+
     if (errors?.notEquivalent) {
       return 'Passwords are different';
     }
@@ -125,6 +120,8 @@ export class RegisterComponent implements OnDestroy {
     if (errors?.pattern) {
       return 'Special characters are unsupported';
     }
+
+    return getError(control);
   }
 
   get username(): AbstractControl {
